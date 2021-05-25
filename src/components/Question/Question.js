@@ -15,6 +15,9 @@ const Question = ({ data, onAnswerUpdate, numberOfQuestions, activeQuestion, onS
 
   const changeHandler = (e) => {
     setSelected(e.target.value);  
+    if(error) {
+      setError('');
+    }
   }
 
   const nextClickHandler = (e) => {

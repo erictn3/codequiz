@@ -4,16 +4,21 @@ import './App.css';
 import Question from './components/Question/Question';
 // import Start from './components/Start/Start';
 import quizData from './data/quiz.json';
-
+import End from './components/End/End';
 import Start from './components/Start/Start';
 
 const App = () => {
   const [step, setStep] = useState(1);
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
+  const [time, setTIme] = useState(0);
 
   const quizStartHandler = () => {
     setStep(2);
+  }
+
+  const resetClickHandler = () => {
+
   }
 
   return (
@@ -26,7 +31,13 @@ const App = () => {
         activeQuestion={activeQuestion}
         onSetActiveQuestion={setActiveQuestion}
         onSetstep={setStep}
-      
+      />}
+      {step ===3 && <End
+        results={answers}
+        data={quizData.data}
+        onReset={resetClickHandler}
+        onAnswersCheck={() => {}}
+        time={time}
       />}
     </div>
   )
