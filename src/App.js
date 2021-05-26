@@ -29,7 +29,13 @@ const App = () => {
   }
 
   const resetClickHandler = () => {
-
+    setActiveQuestion(0);
+    setAnswers([]);
+    setStep(2);
+    setTime(0);
+    interval = setInterval(() => {
+      setTime(prevTime => prevTime + 1)
+    }, 1000);
   }
 
   return (
