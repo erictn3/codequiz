@@ -7,14 +7,25 @@ import quizData from './data/quiz.json';
 import End from './components/End/End';
 import Start from './components/Start/Start';
 
+let interval;
+
 const App = () => {
   const [step, setStep] = useState(1);
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [time, setTIme] = useState(0);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    if(step ===3 ) {
+      clearInterval(interval);
+    }
+  }, [step]);
 
   const quizStartHandler = () => {
     setStep(2);
+    interval = setInterval(() => {
+      setTime(prevTime => prevTime + 1)
+    }, 1000)
   }
 
   const resetClickHandler = () => {
